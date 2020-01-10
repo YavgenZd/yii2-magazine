@@ -45,8 +45,8 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'backendManager' => require __DIR__ . '/urlManager.php',
-        'frontendUrlManager' => require __DIR__ . '../../frontend/config/urlManager.php',
+        'backendUrlManager' => require __DIR__ . '/urlManager.php',
+        'frontendUrlManager' => require __DIR__ . '/../../frontend/config/urlManager.php',
         'urlManager' => function () {
             return Yii::$app->get('backendUrlManager');
             },

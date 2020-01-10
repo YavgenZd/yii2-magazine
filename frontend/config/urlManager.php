@@ -1,7 +1,9 @@
 <?php
 
+use yii\web\UrlManager;
+
 return [
-    'class' => 'yii/web/UrlManager',
+    'class' => UrlManager::class,
     'hostInfo' => $params['frontendHostInfo'],
     'enablePrettyUrl' => true,
     'showScriptName' => false,

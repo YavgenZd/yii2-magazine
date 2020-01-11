@@ -1,4 +1,9 @@
 <?php
+
+use common\models\User;
+use yii\filters\AccessControl;
+use yii\log\FileTarget;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -18,7 +23,7 @@ return [
             'cookieValidationKey' => $params['cookieValidationKey'],
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => User::class,
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity',
                 'httpOnly' => true,
@@ -37,7 +42,7 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -52,12 +57,12 @@ return [
             },
         ],
         'as access' => [
-            'class' => 'yii\filters\AccessControl',
-            'except' => ['auth/login', 'site/error'],
+            'class' => AccessControl::class,
+            'except' => ['site/login', 'site/error'],
             'rules' => [
                 [
                     'allow' => true,
-                    'roles' => ['admin'],
+                    'roles' => ['@'],
                 ],
             ],
         ],

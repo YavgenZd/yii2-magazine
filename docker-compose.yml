@@ -18,6 +18,14 @@ services:
     container_name: shop_backend
     working_dir: /app
     build: backend
+    environment:
+      XDEBUG_CONFIG: >-
+        remote_enable=on
+        remote_autostart=off
+        remote_port=9000
+        remote_handler=dbgp
+        idekey=PHPSTORM
+        remote_connect_back=1
     ports:
       - 8180:80
     volumes:

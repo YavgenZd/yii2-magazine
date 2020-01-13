@@ -4,14 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f79cfab4577306400ad204f6ac7082fd",
+    "content-hash": "2559e6952b1b591d1b7984d5fcacfae3",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "86990d5b48f5b9d747ee14d67df7bb200ffc6f85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/86990d5b48f5b9d747ee14d67df7bb200ffc6f85",
+                "reference": "86990d5b48f5b9d747ee14d67df7bb200ffc6f85",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.9.0 <4.0.0"
+            },
+            "type": "template",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abdullah Almsaeed",
+                    "email": "abdullah@almsaeedstudio.com"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2019-11-02T15:21:42+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -86,7 +129,7 @@
             "version": "2.0.7.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:yiisoft/jquery-pjax.git",
+                "url": "https://github.com/yiisoft/jquery-pjax.git",
                 "reference": "aef7b953107264f00234902a3880eb50dafc48be"
             },
             "dist": {
@@ -161,6 +204,68 @@
                 "markdown-extra"
             ],
             "time": "2018-12-10T09:41:35+00:00"
+        },
+        {
+            "name": "dmstr/yii2-adminlte-asset",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-adminlte-asset.git",
+                "reference": "ddaa6acdeefe111e3a742075508ec55806faa338"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-adminlte-asset/zipball/ddaa6acdeefe111e3a742075508ec55806faa338",
+                "reference": "ddaa6acdeefe111e3a742075508ec55806faa338",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^2.4.0",
+                "yiisoft/yii2": "2.*",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
+            },
+            "suggest": {
+                "cebe/yii2-gravatar": "Display user icons",
+                "rmrevin/yii2-fontawesome": "Font icons"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "tobias@diemeisterei.de"
+                },
+                {
+                    "name": "Evgeniy Tkachenko",
+                    "email": "et.coder@gmail.com"
+                }
+            ],
+            "description": "AdminLTE backend theme asset bundle for Yii 2.0 Framework",
+            "keywords": [
+                "AdminLTE",
+                "admin",
+                "asset",
+                "backend",
+                "css",
+                "extension",
+                "less",
+                "theme",
+                "yii2"
+            ],
+            "time": "2018-12-07T13:48:26+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -4094,7 +4199,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "dmstr/yii2-adminlte-asset": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

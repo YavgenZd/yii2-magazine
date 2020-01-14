@@ -1,6 +1,6 @@
 <?php
 
-use common\models\User;
+use common\entities\User;
 use yii\log\FileTarget;
 
 $params = array_merge(

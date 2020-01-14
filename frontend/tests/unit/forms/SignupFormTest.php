@@ -1,8 +1,9 @@
 <?php
-namespace frontend\tests\unit\models;
+namespace frontend\tests\unit\forms;
 
 use common\fixtures\UserFixture;
-use frontend\models\SignupForm;
+use frontend\forms\SignupForm;
+use PHPUnit\Framework\TestResult;
 
 class SignupFormTest extends \Codeception\Test\Unit
 {
@@ -16,7 +17,7 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
+                'class' => UserFixture::class,
                 'dataFile' => codecept_data_dir() . 'user.php'
             ]
         ]);
@@ -33,11 +34,11 @@ class SignupFormTest extends \Codeception\Test\Unit
         $user = $model->signup();
         expect($user)->true();
 
-        /** @var \common\models\User $user */
-        $user = $this->tester->grabRecord('common\models\User', [
+        /** @var \common\entities\User $user */
+        $user = $this->tester->grabRecord('common\entities\User', [
             'username' => 'some_username',
             'email' => 'some_email@example.com',
-            'status' => \common\models\User::STATUS_INACTIVE
+            'status' => \common\entities\User::STATUS_INACTIVE
         ]);
 
         $this->tester->seeEmailIsSent();
@@ -67,5 +68,18 @@ class SignupFormTest extends \Codeception\Test\Unit
             ->equals('This username has already been taken.');
         expect($model->getFirstError('email'))
             ->equals('This email address has already been taken.');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count():int
+    {
+        // TODO: Implement count() method.
+    }
+
+    public function run(TestResult $result = null): \PHPUnit\Framework\TestResult
+    {
+        // TODO: Implement run() method.
     }
 }

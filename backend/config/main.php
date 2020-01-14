@@ -1,6 +1,6 @@
 <?php
 
-use common\models\User;
+use common\entities\User;
 use yii\filters\AccessControl;
 use yii\log\FileTarget;
 

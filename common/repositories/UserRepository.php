@@ -8,7 +8,11 @@ use common\entities\User;
 
 class UserRepository
 {
-    public function getByEmailConfirmToken(string $token):User
+    public function findByUsernameOrEmail($value): ?User
+    {
+        return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
+    }
+    public function getByEmailConfirmToken(string $token): User
     {
         return $this->getBy(['email_confirm_token' => $token]);
     }
@@ -22,7 +26,7 @@ class UserRepository
         return $this->getBy(['password_reset_token' => $token]);
     }
 
-    public function existsByPasswordResetToken(string $token): User
+    public function existsByPasswordResetToken(string $token): bool
     {
         return (bool) User::findByPasswordResetToken($token);
     }

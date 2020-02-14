@@ -39,11 +39,37 @@ class User extends ActiveRecord implements IdentityInterface
         return $user;
     }
 
+    public function confirmSignup(): void
+    {
+        if($this->isActive()) {
+            throw new \DomainException('User is already active.');
+        }
+
+        $this->status = self::STATUS_ACTIVE;
+        $this->removeVerificationToken();
+    }
+
+    public function requestPasswordReset(): void
+    {
+        if (!empty($this->password_reset_token) && self::isPasswordResetTokenValid($this->password_reset_token)) {
+            throw new \DomainException('Password resetting is already requested.');
+        }
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    public function resetPassword($password): void
+    {
+        if (empty($this->password_reset_token)) {
+            throw new \DomainException('Password resetting is not requested.');
+        }
+        $this->setPassword($password);
+        $this->password_reset_token = null;
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
     }
-
 
     /**
      * {@inheritdoc}
@@ -224,5 +250,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Removes verification token
+     */
+    public function removeVerificationToken()
+    {
+        $this->verification_token = null;
     }
 }
